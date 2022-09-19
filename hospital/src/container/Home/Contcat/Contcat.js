@@ -1,6 +1,34 @@
 import React from 'react';
+import * as yup from 'yup';
+import { Form, Formik, useFormik } from 'formik';
 
 function Contcat(props) {
+  authschema = {
+    name: yup.string().required("please Enter your name"),
+    email: yup.string().required("please Enter email").email("please Enter Valid email"),
+    password: yup.string().required("Enter your Password").min(8),
+}
+
+init = {
+  name: '',
+  email: '',
+  password: '',
+}
+
+    let schema = yup.object().shape(appoinschema);
+
+       const formik = useFormik({
+            initialValues: initapp,
+            validationSchema: schema,
+             onSubmit: values => {
+            console.log(values);
+        },
+    });
+
+    const { handleChange, errors, handleSubmit ,touched,OnBlur} = formik;
+
+
+
     return (
         <div>
             <section id="contact" classname="contact">

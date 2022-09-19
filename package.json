@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "for": "^0.1.0",
+    "formik": "^2.2.9",
+    "mik": "^1.0.0",
+    "react-router-dom": "^5.2.0"
+  }
+}
