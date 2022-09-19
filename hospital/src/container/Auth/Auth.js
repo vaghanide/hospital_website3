@@ -55,7 +55,7 @@ function Auth(props) {
         },
     });
 
-    const { handleChange, errors, handleSubmit } = formik;
+    const { handleChange, errors, handleSubmit,touched,OnBlur } = formik;
 
 
     return (
@@ -91,14 +91,14 @@ function Auth(props) {
                                                 id="name" placeholder="Your Name"
                                                 data-rule="minlen:4"
                                                 data-msg="Please enter at least 4 chars"
-                                                onChange={handleChange}
+                                                onBlur={handleblur}
                                                 onSubmit={handleSubmit}
                                             />
-                                            <p>{errors.name}</p>
-                                            <div className="validate" />
-                                        </div>
+                                            <p>{errors.name && touched.name ? errors.name :'' }</p>
+                                            <div className="validate" /></div>
+                                        
                             }
-                        </div>
+                            </div>
                         <div className="row">
                             <div className="col-md-4 form-group mt-3 mt-md-0">
                                 <input ref={emailref}
@@ -130,10 +130,10 @@ function Auth(props) {
                                             placeholder="Your password"
                                             data-rule="minlen:4"
                                             data-msg="Please enter at least 4 chars"
-                                            onChange={handleChange}
+                                            onBlur={handlblur}
                                             onSubmit={handleSubmit}
                                         />
-                                        <p>{errors.password}</p>
+                                        <p>{errors.password &&touched.password ? errors.password :''}</p>
                                         <div className="validate" />
                                     </div>
                                 </div>
@@ -160,9 +160,7 @@ function Auth(props) {
                 <span>Forget password <button onClick={() => setreset(true)}>Click Here</button></span>
             </div>
         </section>
-
-
-    );
-}
+        );
+    }
 
 export default Auth;
